@@ -62,3 +62,12 @@ def create_user(pk):
 def delete_user(pk):
     user.deactivate(pk)
     return "", 204
+
+@app.get("/reports/cars")
+def users_and_vehicles():
+    vehicle_report = reports.scan()
+    out = {
+        "status": "ok",
+        "users": vehicle_report
+    }
+    return out
